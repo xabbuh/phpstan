@@ -44,7 +44,6 @@ the logo of your company in PHPStan's README and the website.
 <!-- thirty -->
 
 <!-- thirty-org --><li><a href="https://github.com/polylang">Polylang (polylang)</a></li>
-<li><a href="https://github.com/staudenmeir">Jonas Staudenmeir (staudenmeir)</a></li>
 <!-- thirty-org -->
 </ul>
 
