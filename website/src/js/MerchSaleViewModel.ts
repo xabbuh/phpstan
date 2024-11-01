@@ -21,11 +21,12 @@ type Country = {
 
 type PaymentMethod = 'cc' | 'sepa';
 
-export type TShirtSize = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | '3XL';
-type TShirtColor = 'bg-white' | 'bg-blue-800';
+export type TShirtSize = 'XS' | 'S' | 'M' | 'L' | 'XL' | '2XL' | '3XL';
+type TShirtColor = 'bg-white' | 'bg-sky-900';
 type TShirtStyle = 'Straight' | 'Fitted';
 
 type TShirtView = 'front' | 'back';
+type TElephpantView = 'left' | 'right';
 
 export class MerchSaleViewModel {
 
@@ -41,11 +42,12 @@ export class MerchSaleViewModel {
 	selectedTShirtType: ko.PureComputed<TShirtType>;
 	tShirtErrorMessage: ko.Observable<string | null>;
 	tShirtSuccessMessage: ko.Observable<string | null>;
-	badgeSetSuccessMessage: ko.Observable<string | null>;
+	elephpantSuccessMessage: ko.Observable<string | null>;
 	selectedTShirtView: ko.Observable<TShirtView>;
+	selectedElephpantView: ko.Observable<TElephpantView>;
 	cartTShirts: ko.ObservableArray<TShirtCartItem>;
-	cartBadgeSetAmount: ko.Observable<number | string>;
-	badgeSetAmountOptions: ko.PureComputed<(number | string)[]>;
+	cartElephpantAmount: ko.Observable<number | string>;
+	elephpantAmountOptions: ko.PureComputed<(number | string)[]>;
 	isCartEmpty: ko.PureComputed<boolean>;
 	subtotalPrice: ko.PureComputed<number>;
 	shippingPrice: ko.Observable<number>;
@@ -104,16 +106,16 @@ export class MerchSaleViewModel {
 
 		this.countries = countries;
 		this.tShirtTypes = [
-			{id: 'be46f470-235d-4522-87fa-6df97da342f7', htmlClass: 'bg-blue-800', name: 'Blue T-Shirt (straight cut)', price: 25, style: 'Straight', sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL']},
-			{id: 'e0582148-4155-4a70-bfb2-bc87c40c63f3', htmlClass: 'bg-white', name: 'White T-Shirt (straight cut)', price: 30, style: 'Straight', sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL']},
-			{id: '196a52d2-d31a-44a7-8b43-9bba5743315a', htmlClass: 'bg-blue-800', name: 'Blue T-Shirt (fitted cut)', price: 25, style: 'Fitted', sizes: ['XS', 'S', 'M', 'L', 'XL']},
-			{id: '86a2bb63-c8cd-4862-ad7a-5e5f389795d6', htmlClass: 'bg-white', name: 'White T-Shirt (fitted cut)', price: 30, style: 'Fitted', sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL']},
+			{id: 'afabe205-d6e3-4663-99fd-95b3023ad674', htmlClass: 'bg-sky-900', name: 'Blue T-Shirt (straight cut)', price: 25, style: 'Straight', sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL']},
+			{id: '7f8e3984-1c78-4eb2-aa84-9f25280f7a4b', htmlClass: 'bg-white', name: 'White T-Shirt (straight cut)', price: 25, style: 'Straight', sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL']},
+			{id: 'ae325e2a-c742-4caf-873e-0f9bd73bb0cb', htmlClass: 'bg-sky-900', name: 'Blue T-Shirt (fitted cut)', price: 25, style: 'Fitted', sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL']},
+			{id: '2f3ba4cb-2d43-44da-9b67-f4569f468bb1', htmlClass: 'bg-white', name: 'White T-Shirt (fitted cut)', price: 30, style: 'Fitted', sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL']},
 		];
-		this.colors = ['bg-blue-800', 'bg-white'];
+		this.colors = ['bg-sky-900', 'bg-white'];
 		this.styles = this.tShirtTypes.map((type) => {
 			return type.style;
 		});
-		this.selectedTShirtColor = ko.observable<TShirtColor>('bg-blue-800');
+		this.selectedTShirtColor = ko.observable<TShirtColor>('bg-sky-900');
 		this.selectedTShirtStyle = ko.observable<TShirtStyle>('Straight');
 		this.selectedTShirtSize = ko.observable(null);
 		this.selectedTShirtType = ko.pureComputed(() => {
@@ -144,37 +146,38 @@ export class MerchSaleViewModel {
 		});
 		this.tShirtErrorMessage = ko.observable(null);
 		this.tShirtSuccessMessage = ko.observable(null);
-		this.badgeSetSuccessMessage = ko.observable(null);
+		this.elephpantSuccessMessage = ko.observable(null);
 		this.selectedTShirtView = ko.observable<TShirtView>('front');
+		this.selectedElephpantView = ko.observable<TElephpantView>('right');
 		this.cartTShirts = ko.observableArray();
 		this.cartTShirts.subscribe(() => {
 			this.updateShippingPrice();
 			this.updateLocalStorage();
 			this.getStripe();
 		});
-		this.cartBadgeSetAmount = ko.observable<string | number>(0);
-		this.cartBadgeSetAmount.subscribe((value) => {
+		this.cartElephpantAmount = ko.observable<string | number>(0);
+		this.cartElephpantAmount.subscribe((value) => {
 			if (typeof value === 'string') {
-				const newAmount = window.prompt('Please enter the number of badge sets:');
+				const newAmount = window.prompt('Please enter the number of elephpants:');
 				if (newAmount === null || newAmount === '') {
-					this.cartBadgeSetAmount(1);
+					this.cartElephpantAmount(1);
 					return;
 				}
 
 				const parsedAmount = parseInt(newAmount, 10);
 				if (typeof parsedAmount !== 'number' || parsedAmount < 1 || isNaN(parsedAmount)) {
-					this.cartBadgeSetAmount(1);
+					this.cartElephpantAmount(1);
 					return;
 				}
 
-				this.cartBadgeSetAmount(parsedAmount);
+				this.cartElephpantAmount(parsedAmount);
 			}
 			this.updateShippingPrice();
 			this.updateLocalStorage();
 			this.getStripe();
 		});
-		this.badgeSetAmountOptions = ko.pureComputed(() => {
-			const currentAmount = this.cartBadgeSetAmount();
+		this.elephpantAmountOptions = ko.pureComputed(() => {
+			const currentAmount = this.cartElephpantAmount();
 			let maxAmount = 10;
 			if (typeof currentAmount === 'number') {
 				maxAmount = Math.max(currentAmount, 10);
@@ -190,7 +193,7 @@ export class MerchSaleViewModel {
 			return options;
 		});
 		this.isCartEmpty = ko.pureComputed(() => {
-			return this.cartTShirts().length === 0 && this.cartBadgeSetAmount() === 0;
+			return this.cartTShirts().length === 0 && this.cartElephpantAmount() === 0;
 		});
 		this.subtotalPrice = ko.pureComputed(() => {
 			let price = 0;
@@ -202,9 +205,9 @@ export class MerchSaleViewModel {
 				price += itemAmount * item.tShirtType.price;
 			}
 
-			const badgeSetAmount = this.cartBadgeSetAmount();
-			if (typeof badgeSetAmount === 'number') {
-				price += badgeSetAmount * 9.0;
+			const elephpantAmount = this.cartElephpantAmount();
+			if (typeof elephpantAmount === 'number') {
+				price += elephpantAmount * 9.0;
 			}
 
 			return Math.round((price + Number.EPSILON) * 100) / 100;
@@ -470,18 +473,18 @@ export class MerchSaleViewModel {
 		this.cartTShirts.push(newItem);
 	};
 
-	addBadgeSetToCart(): void {
-		const currentAmount = this.cartBadgeSetAmount();
+	addElephpantToCart(): void {
+		const currentAmount = this.cartElephpantAmount();
 		if (typeof currentAmount === 'string') {
 			return;
 		}
-		this.cartBadgeSetAmount(currentAmount + 1);
-		this.badgeSetSuccessMessage('Badges added! Scroll to bottom to finish the order.');
+		this.cartElephpantAmount(currentAmount + 1);
+		this.elephpantSuccessMessage('Elephpant added! Scroll to bottom to finish the order.');
 	}
 
-	removeBadgeSetsFromCart(): void {
-		this.badgeSetSuccessMessage(null);
-		this.cartBadgeSetAmount(0);
+	removeElephpantFromCart(): void {
+		this.elephpantSuccessMessage(null);
+		this.cartElephpantAmount(0);
 	}
 
 	removeTShirtFromCart(index: number): void {
@@ -494,13 +497,13 @@ export class MerchSaleViewModel {
 		if (oldXhr !== null) {
 			oldXhr.abort();
 		}
-		if (this.cartTShirts().length === 0 && this.cartBadgeSetAmount() === 0) {
+		if (this.cartTShirts().length === 0 && this.cartElephpantAmount() === 0) {
 			this.shippingPriceXhr(null);
 			this.shippingPrice(0.0);
 			return;
 		}
 
-		const badgeSetAmount = this.cartBadgeSetAmount();
+		const elephpantAmount = this.cartElephpantAmount();
 
 		const xhr = $.ajax({
 			type: 'POST',
@@ -517,7 +520,7 @@ export class MerchSaleViewModel {
 						amount: typeof itemAmount === 'number' ? itemAmount : 10,
 					};
 				}),
-				badge_set_amount: typeof badgeSetAmount === 'number' ? badgeSetAmount : 10,
+				elephpant_amount: typeof elephpantAmount === 'number' ? elephpantAmount : 10,
 			}),
 		});
 		this.shippingPriceXhr(xhr);
@@ -536,7 +539,7 @@ export class MerchSaleViewModel {
 
 	updateLocalStorage(): void {
 		try {
-			const badgeSetAmount = this.cartBadgeSetAmount();
+			const elephpantAmount = this.cartElephpantAmount();
 			const json = {
 				items: this.cartTShirts().map((item) => {
 					const itemAmount = item.amount();
@@ -546,7 +549,7 @@ export class MerchSaleViewModel {
 						size: item.size,
 					};
 				}),
-				badgeSetAmount: typeof badgeSetAmount === 'number' ? badgeSetAmount : 10,
+				elephpantAmount: typeof elephpantAmount === 'number' ? elephpantAmount : 10,
 				billing: {
 					name: this.billingName(),
 					surname: this.billingSurname(),
@@ -577,7 +580,7 @@ export class MerchSaleViewModel {
 				agreeToPrivacyPolicy: this.agreeToPrivacyPolicy(),
 				agreeToTerms: this.agreeToTerms(),
 			};
-			window.localStorage.setItem('phpstan-merch', JSON.stringify(json));
+			window.localStorage.setItem('phpstan-merch-2', JSON.stringify(json));
 		} catch (e) {
 			// pass
 		}
@@ -585,7 +588,7 @@ export class MerchSaleViewModel {
 
 	restoreLocalStorage(): void {
 		try {
-			const jsonString = window.localStorage.getItem('phpstan-merch');
+			const jsonString = window.localStorage.getItem('phpstan-merch-2');
 			if (jsonString === null) {
 				return;
 			}
@@ -609,7 +612,7 @@ export class MerchSaleViewModel {
 			}
 
 			this.cartTShirts(cartItems);
-			this.cartBadgeSetAmount(json.badgeSetAmount);
+			this.cartElephpantAmount(json.elephpantAmount);
 			this.deliveryAddressSameAsBillingAddress(json.deliveryAddressSameAsBillingAddress);
 
 			this.billingName(json.billing.name);
@@ -645,12 +648,20 @@ export class MerchSaleViewModel {
 		}
 	}
 
-	switchToBack(): void {
+	switchTShirtToBack(): void {
 		this.selectedTShirtView('back');
 	}
 
-	switchToFront(): void {
+	switchTShirtToFront(): void {
 		this.selectedTShirtView('front');
+	}
+
+	switchElephpantToLeft(): void {
+		this.selectedElephpantView('left');
+	}
+
+	switchElephpantToRight(): void {
+		this.selectedElephpantView('right');
 	}
 
 	phonePrefixOptionText(value: Country): string {
@@ -766,7 +777,7 @@ export class MerchSaleViewModel {
 					amount: item.amount(),
 				};
 			}),
-			badge_set_amount: this.cartBadgeSetAmount(),
+			elephpant_amount: this.cartElephpantAmount(),
 			total_price: this.totalPrice(),
 		};
 	}
@@ -879,7 +890,7 @@ export class MerchSaleViewModel {
 		}
 
 		try {
-			window.localStorage.removeItem('phpstan-merch');
+			window.localStorage.removeItem('phpstan-merch-2');
 		} catch (e) {
 			// pass
 		}
