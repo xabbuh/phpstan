@@ -111,7 +111,7 @@ export class MerchSaleViewModel {
 		countries.sort((a: Country, b: Country) => {
 			return a.country_name.localeCompare(b.country_name);
 		});
-		const endDate = new Date(1637621999 * 1000).getTime(); // 'Nov 22, 2021 23:59:59' Europe/Prague
+		const endDate = new Date(1733698799 * 1000).getTime(); // 'Dec 8, 2024 23:59:59' Europe/Prague
 		this.canBuy = (endDate - (new Date().getTime())) > 0;
 
 		this.distributor = ko.observable(null);
