@@ -78,9 +78,11 @@ permalink: "/merch.html"
 
   </div>
 
+  <!-- ko ifnot: merchSale.canBuy -->
   <div class="text-sm px-3 py-2 mt-1 mb-3 text-gray-500">
     <div class="text-center">The sale will begin soon.</div>
   </div>
+  <!-- /ko -->
 
   <div data-bind="visible: false" class="mx-auto w-12 h-12 my-12">
 		<div class="spinner"></div>
@@ -438,18 +440,18 @@ permalink: "/merch.html"
                 <div class="flex-shrink-0">
                   <!-- ko if: tShirtType.htmlClass === 'bg-white' -->
                     <!-- ko if: tShirtType.style === 'Straight' -->
-                      <img src="/tmp/images/tshirt-white-front.jpg" alt="White T-shirt" class="w-20 rounded-md">
+                      <img src="/tmp/images/tshirt-2024-white-front-straight.jpg" alt="White T-shirt" class="w-20 rounded-md">
                     <!-- /ko -->
                     <!-- ko if: tShirtType.style === 'Fitted' -->
-                      <img src="/tmp/images/tshirt-white-front-fitted.jpg" alt="White T-shirt" class="w-20 rounded-md">
+                      <img src="/tmp/images/tshirt-2024-white-front-fitted.jpg" alt="White T-shirt" class="w-20 rounded-md">
                     <!-- /ko -->
                   <!-- /ko -->
                   <!-- ko if: tShirtType.htmlClass === 'bg-sky-900' -->
                     <!-- ko if: tShirtType.style === 'Straight' -->
-                      <img src="/tmp/images/tshirt-blue-front.jpg" alt="Blue T-shirt" class="w-20 rounded-md">
+                      <img src="/tmp/images/tshirt-2024-blue-front-straight.jpg" alt="Blue T-shirt" class="w-20 rounded-md">
                     <!-- /ko -->
                     <!-- ko if: tShirtType.style === 'Fitted' -->
-                      <img src="/tmp/images/tshirt-blue-front-fitted.jpg" alt="Blue T-shirt" class="w-20 rounded-md">
+                      <img src="/tmp/images/tshirt-2024-blue-front-fitted.jpg" alt="Blue T-shirt" class="w-20 rounded-md">
                     <!-- /ko -->
                   <!-- /ko -->
                 </div>
@@ -511,7 +513,7 @@ permalink: "/merch.html"
                 </div>
 
                 <div class="flex-1 pt-2 flex items-end justify-between">
-                  <p class="mt-1 text-sm font-medium text-gray-900">9 €</p>
+                  <p class="mt-1 text-sm font-medium text-gray-900">30 €</p>
 
                   <div class="ml-4">
                     <label for="quantity" class="sr-only">Quantity</label>

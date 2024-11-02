@@ -202,12 +202,12 @@ export class MerchSaleViewModel {
 				if (typeof itemAmount !== 'number') {
 					continue;
 				}
-				price += itemAmount * item.tShirtType.price;
+				price += itemAmount * item.tShirtType.price;
 			}
 
 			const elephpantAmount = this.cartElephpantAmount();
 			if (typeof elephpantAmount === 'number') {
-				price += elephpantAmount * 9.0;
+				price += elephpantAmount * 30.0;
 			}
 
 			return Math.round((price + Number.EPSILON) * 100) / 100;
@@ -886,7 +886,9 @@ export class MerchSaleViewModel {
 
 		const anyWindow = (window as any);
 		if (typeof anyWindow.fathom !== 'undefined') {
-			anyWindow.fathom.trackGoal('DPFY11RI', this.totalPrice() * 100);
+			anyWindow.fathom.trackEvent('Merch 2.0 order', {
+				_value: this.totalPrice() * 100, // Value is in cents
+			});
 		}
 
 		try {
