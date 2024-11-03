@@ -109,7 +109,7 @@ export class MerchSaleViewModel {
 			{id: 'afabe205-d6e3-4663-99fd-95b3023ad674', htmlClass: 'bg-sky-900', name: 'Blue T-Shirt (straight cut)', price: 25, style: 'Straight', sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL']},
 			{id: '7f8e3984-1c78-4eb2-aa84-9f25280f7a4b', htmlClass: 'bg-white', name: 'White T-Shirt (straight cut)', price: 25, style: 'Straight', sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL']},
 			{id: 'ae325e2a-c742-4caf-873e-0f9bd73bb0cb', htmlClass: 'bg-sky-900', name: 'Blue T-Shirt (fitted cut)', price: 25, style: 'Fitted', sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL']},
-			{id: '2f3ba4cb-2d43-44da-9b67-f4569f468bb1', htmlClass: 'bg-white', name: 'White T-Shirt (fitted cut)', price: 30, style: 'Fitted', sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL']},
+			{id: '2f3ba4cb-2d43-44da-9b67-f4569f468bb1', htmlClass: 'bg-white', name: 'White T-Shirt (fitted cut)', price: 25, style: 'Fitted', sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL']},
 		];
 		this.colors = ['bg-sky-900', 'bg-white'];
 		this.styles = this.tShirtTypes.map((type) => {
