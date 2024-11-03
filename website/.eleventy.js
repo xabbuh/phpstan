@@ -14,6 +14,7 @@ process.setMaxListeners(0);
 module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy('src/images');
 	eleventyConfig.addPassthroughCopy('src/images-emails');
+	eleventyConfig.addPassthroughCopy('src/images-emails-2');
 	eleventyConfig.addPassthroughCopy('src/js');
 	eleventyConfig.addPassthroughCopy('src/errorsIdentifiers.json');
 	eleventyConfig.addPassthroughCopy('src/app.pcss');
