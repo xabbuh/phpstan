@@ -73,7 +73,15 @@
 		"not IE 11"
 	],
 	"staticFiles": {
-		"staticPath": "tmp/images-emails",
-		"staticOutPath": "images-emails"
+		"staticPath": [
+            {
+                "staticPath": "tmp/images-emails",
+                "staticOutPath": "images-emails"
+            },
+            {
+                "staticPath": "tmp/images-emails-2",
+                "staticOutPath": "images-emails-2"
+            }
+        ]
 	}
 }
