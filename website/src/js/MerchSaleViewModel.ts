@@ -28,6 +28,12 @@ type TShirtStyle = 'Straight' | 'Fitted';
 type TShirtView = 'front' | 'back';
 type TElephpantView = 'left' | 'right';
 
+type TDistributor = {
+	id: string,
+	name: string,
+	country: string,
+}
+
 export class MerchSaleViewModel {
 
 	canBuy: boolean;
@@ -76,6 +82,10 @@ export class MerchSaleViewModel {
 	deliveryZip: ko.Observable<string>;
 	deliveryCountry: ko.Observable<string>;
 
+	distributor: ko.Observable<TDistributor | null>;
+	distributorLoading: ko.Observable<boolean>;
+	distributorError: ko.Observable<string | null>;
+
 	email: ko.Observable<string>;
 	phonePrefix: ko.Observable<string>;
 	phoneNumber: ko.Observable<string>;
@@ -97,7 +107,7 @@ export class MerchSaleViewModel {
 
 	successfulOrder: ko.Observable<boolean>;
 
-	constructor() {
+	constructor(distributor: string | null) {
 		countries.sort((a: Country, b: Country) => {
 			return a.country_name.localeCompare(b.country_name);
 		});
@@ -342,6 +352,15 @@ export class MerchSaleViewModel {
 			this.updateShippingPrice();
 		});
 
+		this.distributor = ko.observable(null);
+		this.distributor.subscribe(() => {
+			this.updateLocalStorage();
+			this.updateShippingPrice();
+		});
+
+		this.distributorLoading = ko.observable(distributor !== null);
+		this.distributorError = ko.observable(null);
+
 		this.email = ko.observable('');
 		this.email.subscribe(() => {
 			this.updateLocalStorage();
@@ -420,6 +439,33 @@ export class MerchSaleViewModel {
 		this.successfulOrder = ko.observable<boolean>(false);
 
 		this.restoreLocalStorage();
+		if (distributor !== null) {
+			$.ajax({
+				type: 'GET',
+				url: 'https://merch-api.phpstan.org/verify-distributor',
+				contentType: 'application/json; charset=utf-8',
+				dataType: 'json',
+				data: {
+					id: distributor,
+				},
+			}).done((result) => {
+				this.distributor({
+					id: distributor,
+					name: result.name,
+					country: result.country,
+				});
+				this.distributorError(null);
+			}).fail((xhr) => {
+				this.distributor(null);
+				if (xhr.status === 404) {
+					this.distributorError('Distributor not found.');
+				} else {
+					this.distributorError('Could not load the distributor.');
+				}
+			}).always(() => {
+				this.distributorLoading(false);
+			});
+		}
 	}
 
 	selectTShirtColor(color: TShirtColor): void {
@@ -504,6 +550,7 @@ export class MerchSaleViewModel {
 		}
 
 		const elephpantAmount = this.cartElephpantAmount();
+		const distributor = this.distributor();
 
 		const xhr = $.ajax({
 			type: 'POST',
@@ -521,6 +568,7 @@ export class MerchSaleViewModel {
 					};
 				}),
 				elephpant_amount: typeof elephpantAmount === 'number' ? elephpantAmount : 10,
+				distributor: distributor === null ? null : distributor.id,
 			}),
 		});
 		this.shippingPriceXhr(xhr);
@@ -573,6 +621,7 @@ export class MerchSaleViewModel {
 					zip: this.deliveryZip(),
 					country: this.deliveryCountry(),
 				},
+				distributor: this.distributor(),
 				email: this.email(),
 				phonePrefix: this.phonePrefix(),
 				phoneNumber: this.phoneNumber(),
@@ -650,6 +699,8 @@ export class MerchSaleViewModel {
 			this.deliveryZip(json.delivery.zip);
 			this.deliveryCountry(json.delivery.country);
 
+			this.distributor(json.distributor);
+
 			this.email(json.email);
 			this.phonePrefix(json.phonePrefix);
 			this.phoneNumber(json.phoneNumber);
@@ -685,6 +736,22 @@ export class MerchSaleViewModel {
 		}
 
 		return value.country_name + ' (+' + value.phone_code + ')';
+	}
+
+	resetDistributor(): void {
+		this.distributor(null);
+		this.distributorLoading(false);
+		this.distributorError(null);
+
+		const urlParams = new URLSearchParams(window.location.search);
+		urlParams.delete('distributor');
+
+		const urlParamsAsString = urlParams.toString();
+		if (urlParamsAsString === '') {
+			window.history.replaceState({}, '', '/merch');
+		} else {
+			window.history.replaceState({}, '', '/merch?' + urlParamsAsString);
+		}
 	}
 
 	getStripe(): Promise<Stripe | null> {
@@ -764,6 +831,8 @@ export class MerchSaleViewModel {
 			throw new Error('Undefined phone prefix');
 		}
 
+		const distributor = this.distributor();
+
 		return {
 			email: this.email(),
 			billing_name: this.billingName(),
@@ -793,6 +862,7 @@ export class MerchSaleViewModel {
 				};
 			}),
 			elephpant_amount: this.cartElephpantAmount(),
+			distributor: distributor === null ? null : distributor.id,
 			total_price: this.totalPrice(),
 		};
 	}
@@ -808,6 +878,12 @@ export class MerchSaleViewModel {
 
 	async confirmCreditCardOrder(): Promise<void> {
 		if (this.shippingPriceLoading()) {
+			return;
+		}
+		if (this.distributorLoading()) {
+			return;
+		}
+		if (this.distributorError() !== null) {
 			return;
 		}
 		const stripe = await this.getStripe();
@@ -866,6 +942,12 @@ export class MerchSaleViewModel {
 
 	confirmSepaOrder(): void {
 		if (this.shippingPriceLoading()) {
+			return;
+		}
+		if (this.distributorLoading()) {
+			return;
+		}
+		if (this.distributorError() !== null) {
 			return;
 		}
 
@@ -935,7 +1017,7 @@ export class MerchSaleViewModel {
 			errors.push('Please fill in postal code.');
 		}
 
-		if (!this.deliveryAddressSameAsBillingAddress()) {
+		if (!this.deliveryAddressSameAsBillingAddress() && this.distributor() === null) {
 			if (this.deliveryName().trim().length === 0) {
 				errors.push('Please fill in your first name.');
 			}

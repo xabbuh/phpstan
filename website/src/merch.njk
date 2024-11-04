@@ -609,14 +609,40 @@ permalink: "/merch.html"
         <div class="mt-10 border-t border-gray-200 pt-10">
           <h2 class="text-lg font-medium text-gray-900">Delivery address</h2>
 
-          <div class="mt-4 flex items-center">
+          <div class="mt-4 flex items-center" data-bind="visible: distributor() === null && distributorError() === null">
             <input id="same-as-billing" name="same-as-billing" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" data-bind="checked: deliveryAddressSameAsBillingAddress">
             <div class="ml-2">
               <label for="same-as-billing" class="text-sm font-medium text-gray-900">Same as billing address</label>
             </div>
           </div>
 
-          <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4" data-bind="visible: !deliveryAddressSameAsBillingAddress()">
+          <!-- ko if: distributorError() !== null -->
+			  <div class="rounded-md bg-red-50 p-4 mt-4">
+				<div class="flex">
+				  <div class="flex-shrink-0">
+					<!-- Heroicon name: solid/x-circle -->
+					<svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+					  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+					</svg>
+				  </div>
+				  <div class="ml-3">
+					<h3 class="text-sm font-medium text-red-800" data-bind="text: distributorError"></h3>
+					<button class="w-full bg-gray-300 border border-gray-300 shadow-sm rounded-md shadow-sm py-2 px-3 mt-2 text-sm font-medium text-gray-700 hover:bg-gray-200" data-bind="click: resetDistributor">Ship to my address</button>
+				  </div>
+				</div>
+			  </div>
+			<!-- /ko -->
+
+			<!-- ko if: distributor() !== null -->
+			  <div class="rounded-md bg-gray-200 p-4 mt-4">
+				<h3 class="text-sm font-bold text-gray-800">Your order will ship to:</h3>
+				<p class="text-sm mt-1" data-bind="text: distributor().name + ', ' + distributor().country"></p>
+				<p class="text-sm mt-4">Your shipping is free. You will be contacted with details how to pick up your order once the distributor receives it.</p>
+				<button class="mt-4 w-full bg-gray-300 border border-gray-400 shadow-sm rounded-md shadow-sm py-2 px-3 mt-2 text-sm font-medium text-gray-700 hover:bg-gray-200" data-bind="click: resetDistributor">Ship to my address instead</button>
+			  </div>
+			<!-- /ko -->
+
+          <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4" data-bind="visible: !deliveryAddressSameAsBillingAddress() && distributor() === null && distributorError() === null">
             <div>
               <label for="delivery-first-name" class="block text-sm font-medium text-gray-700">First name</label>
               <div class="mt-1">
