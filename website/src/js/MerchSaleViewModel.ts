@@ -114,6 +114,15 @@ export class MerchSaleViewModel {
 		const endDate = new Date(1637621999 * 1000).getTime(); // 'Nov 22, 2021 23:59:59' Europe/Prague
 		this.canBuy = (endDate - (new Date().getTime())) > 0;
 
+		this.distributor = ko.observable(null);
+		this.distributor.subscribe(() => {
+			this.updateLocalStorage();
+			this.updateShippingPrice();
+		});
+
+		this.distributorLoading = ko.observable(distributor !== null);
+		this.distributorError = ko.observable(null);
+
 		this.countries = countries;
 		this.tShirtTypes = [
 			{id: 'afabe205-d6e3-4663-99fd-95b3023ad674', htmlClass: 'bg-sky-900', name: 'Blue T-Shirt (straight cut)', price: 25, style: 'Straight', sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL']},
@@ -351,15 +360,6 @@ export class MerchSaleViewModel {
 			this.updateLocalStorage();
 			this.updateShippingPrice();
 		});
-
-		this.distributor = ko.observable(null);
-		this.distributor.subscribe(() => {
-			this.updateLocalStorage();
-			this.updateShippingPrice();
-		});
-
-		this.distributorLoading = ko.observable(distributor !== null);
-		this.distributorError = ko.observable(null);
 
 		this.email = ko.observable('');
 		this.email.subscribe(() => {
@@ -629,7 +629,7 @@ export class MerchSaleViewModel {
 				agreeToPrivacyPolicy: this.agreeToPrivacyPolicy(),
 				agreeToTerms: this.agreeToTerms(),
 			};
-			window.localStorage.setItem('phpstan-merch-2', JSON.stringify(json));
+			window.localStorage.setItem('phpstan-merch-24', JSON.stringify(json));
 		} catch (e) {
 			// pass
 		}
@@ -637,7 +637,7 @@ export class MerchSaleViewModel {
 
 	restoreLocalStorage(): void {
 		try {
-			const jsonString = window.localStorage.getItem('phpstan-merch-2');
+			const jsonString = window.localStorage.getItem('phpstan-merch-24');
 			if (jsonString === null) {
 				$.ajax({
 					type: 'POST',
@@ -989,7 +989,7 @@ export class MerchSaleViewModel {
 		}
 
 		try {
-			window.localStorage.removeItem('phpstan-merch-2');
+			window.localStorage.removeItem('phpstan-merch-24');
 		} catch (e) {
 			// pass
 		}
