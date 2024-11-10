@@ -11699,12 +11699,12 @@
         },
         "PHPStan\\Rules\\TooWideTypehints\\TooWideFunctionReturnTypehintRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/TooWideTypehints/TooWideFunctionReturnTypehintRule.php#L81"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/TooWideTypehints/TooWideFunctionReturnTypehintRule.php#L85"
             ]
         },
         "PHPStan\\Rules\\TooWideTypehints\\TooWideMethodReturnTypehintRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/TooWideTypehints/TooWideMethodReturnTypehintRule.php#L109"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/TooWideTypehints/TooWideMethodReturnTypehintRule.php#L113"
             ]
         }
     },
