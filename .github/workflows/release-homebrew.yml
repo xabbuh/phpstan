@@ -12,6 +12,7 @@ on:
 
 jobs:
   bump:
+    if: startsWith(github.ref, 'refs/tags/2.')
     runs-on: ubuntu-latest
     steps:
       - name: Update Homebrew formula
