@@ -120,6 +120,17 @@ jobs:
               cp ../../../phpstan vendor/phpstan/phpstan/phpstan
               cp ../../../bootstrap.php vendor/phpstan/phpstan/bootstrap.php
               vendor/bin/phpunit tests
+          - php-version: 8.3
+            name: shipmonk/dead-code-detector tests
+            script: |
+              git clone https://github.com/shipmonk-rnd/dead-code-detector.git e2e/integration/repo
+              cd e2e/integration/repo
+              git checkout e3c37299fce6523c9708f24cd3675d65a33bec12
+              composer install
+              cp ../../../phpstan.phar vendor/phpstan/phpstan/phpstan.phar
+              cp ../../../phpstan vendor/phpstan/phpstan/phpstan
+              cp ../../../bootstrap.php vendor/phpstan/phpstan/bootstrap.php
+              vendor/bin/phpunit tests
 #          - php-version: 8.1
 #            name: efabrica-team/phpstan-latte tests
 #            script: |
@@ -415,7 +426,16 @@ jobs:
               cp ../../../phpstan vendor/phpstan/phpstan/phpstan
               cp ../../../bootstrap.php vendor/phpstan/phpstan/bootstrap.php
             phpstan-command: ../../../phpstan.phar analyse -c ../shipmonk.neon
-            baseline-file: shipmonk-rnd-baseline.neon
+          - php-version: 8.3
+            repo: shipmonk-rnd/dead-code-detector
+            ref: e3c37299fce6523c9708f24cd3675d65a33bec12
+            setup: |
+              composer install
+              cp ../../../phpstan.phar vendor/phpstan/phpstan/phpstan.phar
+              cp ../../../phpstan vendor/phpstan/phpstan/phpstan
+              cp ../../../bootstrap.php vendor/phpstan/phpstan/bootstrap.php
+            phpstan-command: vendor/bin/phpstan analyse -c ../shipmonk-dead-code-detector.neon
+            baseline-file: shipmonk-dead-code-detector-baseline.neon
 #          - php-version: 8.1
 #            repo: drupal/drupal
 #            ref: 10.0.0
