@@ -119,8 +119,6 @@ This is useful for [precise analysis of try-catch-finally](/blog/precise-try-cat
 Callables
 -------------
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.11.0</div>
-
 Aside from describing [callable signatures in PHPDoc types](/writing-php-code/phpdoc-types#callables), PHPStan also supports declaring whether the callable is executed immediately or saved for later when passed into a function or a method.
 
 By default PHPStan considers callables passed into function calls to be executed immediately, and callables passed into object method calls to be executed later. These defaults can be overridden with `@param-immediately-invoked-callable` and `@param-later-invoked-callable` PHPDoc tags:
@@ -291,14 +289,10 @@ PHPDoc tags `@template`, `@template-covariant`, `@template-contravariant`, `@ext
 Narrowing types after function call
 ----------------
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.9.0</div>
-
 PHPDoc tags `@phpstan-assert`, `@phpstan-assert-if-true`, `@phpstan-assert-if-false` are used to inform PHPStan about type-narrowing happening inside called functions and methods. [Learn more »](/writing-php-code/narrowing-types#custom-type-checking-functions-and-methods)
 
 Setting parameter type passed by reference
 ---------------
-
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.9.0</div>
 
 PHPDoc tag `@param-out` can be used to set a parameter type passed by reference:
 
@@ -317,8 +311,6 @@ foo($a);
 
 Change type of current object after calling a method
 ---------------
-
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.9.0</div>
 
 PHPDoc tags `@phpstan-self-out` or `@phpstan-this-out` can be used to change the type of the current object after calling a method on it. This is useful for generic mutable objects.
 
@@ -418,13 +410,11 @@ function impureFunction(): bool
 }
 ```
 
-The `@phpstan-pure` tag is also available should you need it, for example if you've set `rememberPossiblyImpureFunctionValues: false` in your configuration file (available in PHPStan 1.8.0). See [Config Reference](https://phpstan.org/config-reference#rememberpossiblyimpurefunctionvalues) for more details.
+The `@phpstan-pure` tag is also available should you need it, for example if you've set `rememberPossiblyImpureFunctionValues: false` in your configuration file. See [Config Reference](https://phpstan.org/config-reference#rememberpossiblyimpurefunctionvalues) for more details.
 
 
 Enforcing class inheritance for interfaces and traits
 ---------------
-
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.10.56</div>
 
 PHPDoc tag `@phpstan-require-extends` can be put above interfaces and traits. When this interface is implemented or trait is used by a class, this class has to extend a parent declared by this tag.
 
@@ -456,8 +446,6 @@ This is useful for solving "Access to an undefined property" error when trying t
 
 Enforcing implementing an interface for traits
 ---------------
-
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.10.56</div>
 
 PHPDoc tag `@phpstan-require-implements` can be put above traits. When this trait is used by a class, this class has to implement an interface declared by this tag.
 
@@ -525,8 +513,6 @@ public function foo(Resource $var): void { ... }
 Readonly properties
 -------------------
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.7.0</div>
-
 PHPStan supports native PHP 8.1 [readonly properties](https://wiki.php.net/rfc/readonly_properties_v2) and validates their correct usage. For older PHP versions, PHPStan also understands the `@readonly` PHPDoc tag to apply similar rules.
 
 ```php
@@ -539,12 +525,8 @@ class Foo
 (new Foo())->bar = 'baz'; // @readonly property Foo::$bar is assigned outside of its declaring class.
 ```
 
-This feature needs to be enabled via feature toggle by opting in to [bleeding edge](https://phpstan.org/blog/what-is-bleeding-edge).
-
 Immutable classes
 -----------------
-
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.7.0</div>
 
 `@immutable` or `@readonly` on the class can be used to make PHPStan treat every property of that class as being readonly.
 
@@ -557,5 +539,3 @@ class Foo
 
 (new Foo())->bar = 'baz'; // @readonly property Foo::$bar is assigned outside of its declaring class.
 ```
-
-This feature needs to be enabled via feature toggle by opting in to [bleeding edge](https://phpstan.org/blog/what-is-bleeding-edge).

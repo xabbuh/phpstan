@@ -99,8 +99,6 @@ class Foo { ... }
 Making `@property` PHPDoc above interfaces work on PHP 8.2+
 ----------------
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.10.56</div>
-
 You might find that the following code is not sufficient to declare a property on an interface when you analyse code in PHP 8.2 and newer:
 
 ```php

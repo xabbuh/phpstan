@@ -71,8 +71,6 @@ General arrays
 Lists
 -------------------------
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.9.0</div>
-
 * `list<Type>`
 * `non-empty-list<Type>`
 
@@ -335,8 +333,6 @@ This is different from [general arrays](#general-arrays) that mandate that all t
 Object shapes
 -------------------------
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.10.12</div>
-
 This feature is inspired by array shapes but represents objects with public properties with specified types:
 
 * `object{'foo': int, "bar": string}`
@@ -365,8 +361,6 @@ Constant enumerations are also supported:
 
 Global constants
 -------------------------
-
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.6</div>
 
 Constants are supported as long as they don't contain lowercase letters and a class with the same name doesn't exist:
 
@@ -408,8 +402,6 @@ Marking a function or a method as `@return never` tells PHPStan the function alw
 
 Integer masks
 -------------------------
-
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.6.0</div>
 
 Some functions accept a bitmask composed by `|`-ing different integer values. `0` is always part of the possible values. Some examples:
 

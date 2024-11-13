@@ -4,8 +4,6 @@ title: Allowed Subtypes
 
 PHP language doesn't have a concept of sealed classes - a way to restrict class hierarchies and provide more control over inheritance. So any interface or non-final class can have an infinite number of child classes. But PHPStan provides an extension type to tell the analyzer the complete list of allowed child classes.
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.9.0</div>
-
 The implementation is all about applying the [core concepts](/developing-extensions/core-concepts) like [reflection](/developing-extensions/reflection) so check out that guide first and then continue here.
 
 This is [the interface](https://apiref.phpstan.org/2.0.x/PHPStan.Reflection.AllowedSubTypesClassReflectionExtension.html) your extension needs to implement:

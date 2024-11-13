@@ -413,8 +413,6 @@ When set to `true`, it reports use of dynamic properties as undefined.
 
 ### `rememberPossiblyImpureFunctionValues`
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.8.0</div>
-
 **default**: `true`
 
 By default, PHPStan considers all functions that return a value to be pure. That means that second call to the same function in the same scope will return the same narrowed type:
@@ -458,8 +456,6 @@ When set to `true`, PHPStan is strict about values with an unspecified (implicit
 
 ### `checkBenevolentUnionTypes`
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.9.0</div>
-
 **default**: `false`
 
 PHPStan defines benevolent union types, such as `array-key`. Benevolent unions aren't checked strictly even at the highest level:
@@ -490,8 +486,6 @@ parameters:
 
 ### `reportPossiblyNonexistentGeneralArrayOffset`
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.11.0</div>
-
 By default PHPStan does not report possibly nonexistent offset on general arrays:
 
 ```php
@@ -508,8 +502,6 @@ By setting `reportPossiblyNonexistentGeneralArrayOffset` to `true` this will be 
 
 ### `reportPossiblyNonexistentConstantArrayOffset`
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.11.0</div>
-
 By default PHPStan does not report possibly nonexistent offset on array shapes:
 
 ```php
@@ -523,8 +515,6 @@ public function doFoo(string $s): void
 By setting `reportPossiblyNonexistentConstantArrayOffset` to `true` this will be reported as an error. This option has effect on [rule level](/user-guide/rule-levels) 7 and up.
 
 ### `reportAlwaysTrueInLastCondition`
-
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.10.0 + Bleeding Edge</div>
 
 **default**: `false`
 
@@ -543,8 +533,6 @@ By setting `reportAlwaysTrueInLastCondition` to `true` the error in `elseif` wil
 
 ### `reportWrongPhpDocTypeInVarTag`
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.10.0 + Bleeding Edge</div>
-
 **default**: `false` ([strict-rules](https://github.com/phpstan/phpstan-strict-rules) sets it to `true`)
 
 **example**: [with `true`](https://phpstan.org/r/55f53970-7db4-41e9-8444-473fb1475690), [with `false`](https://phpstan.org/r/25b91a89-848a-4873-8c2f-5422b32ed217)
@@ -561,8 +549,6 @@ This effectively means that inline `@var` cast can only be used to narrow down o
 
 ### `reportAnyTypeWideningInVarTag`
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.10.60 + Bleeding Edge</div>
-
 **default**: `false`
 
 This option strictens checks used in `reportWrongPhpDocTypeInVarTag`. It strictly disallows any type widening. Compared to default behaviour, it disallows array key widening in inline PHPDoc `@var` tags, so those would get reported:
@@ -571,8 +557,6 @@ This option strictens checks used in `reportWrongPhpDocTypeInVarTag`. It strictl
 * `array<int, int>` => `array<int>`
 
 ### `checkMissingOverrideMethodAttribute`
-
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.10.42</div>
 
 **default**: `false`
 
@@ -641,8 +625,6 @@ parameters:
 		dnsServers:
 			- '8.8.8.8'
 ```
-
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.10.39</div>
 
 By default, [PHPStan Pro](https://phpstan.org/blog/introducing-phpstan-pro){.phpstan-pro-label} stores its files in `sys_get_temp_dir() . '/phpstan-fixer'`. If that does not work for you for example because of multi-user environment, you can change this setting. You can also take advantage of [environment variables](#environment-variables):
 
@@ -800,8 +782,6 @@ This is useful when injecting dependencies with setter methods, or when writing 
 
 Environment variables
 -------------
-
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.10.33</div>
 
 Parameters can reference environment variables:
 

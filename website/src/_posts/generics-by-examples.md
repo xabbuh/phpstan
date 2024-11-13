@@ -221,8 +221,6 @@ class Container
 Container with static services
 ----------------
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.11</div>
-
 If you have a container with a static array of services, you can use `new` to return the correct type like this:
 
 ```php

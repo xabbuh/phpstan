@@ -156,8 +156,6 @@ Outputs a summary of available CLI options, but not as in much detail as this pa
 Diagnose problems
 --------------
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.11.8</div>
-
 To diagnose why PHPStan is behaving a certain way, you can run the `diagnose` command:
 
 ```bash

@@ -103,8 +103,6 @@ With the baseline, you can enable [phpstan-strict-rules](https://github.com/phps
 PHP baseline format instead of NEON
 ------------------
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.10.2</div>
-
 If you choose a filename ending in `.php` passed to `--generate-baseline`, PHPStan will generate the baseline as PHP code instead of NEON:
 
 ```bash

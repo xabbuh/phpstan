@@ -2,8 +2,6 @@
 title: Collectors
 ---
 
-<div class="text-xs inline-block border border-green-600 text-green-600 bg-green-100 rounded px-1 mb-4">Available in PHPStan 1.8.0</div>
-
 If you want to write [custom rules](/developing-extensions/rules) that take a look at the whole codebase instead of a single AST node, you can take advantage of collectors.
 
 PHPStan rules are executed in isolation across multiple processes so it's not possible to share information from all the executions.
