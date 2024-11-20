@@ -6805,14 +6805,14 @@
     "identical.alwaysFalse": {
         "PHPStan\\Rules\\Comparison\\StrictComparisonOfDifferentTypesRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Comparison/StrictComparisonOfDifferentTypesRule.php#L108"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Comparison/StrictComparisonOfDifferentTypesRule.php#L115"
             ]
         }
     },
     "identical.alwaysTrue": {
         "PHPStan\\Rules\\Comparison\\StrictComparisonOfDifferentTypesRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Comparison/StrictComparisonOfDifferentTypesRule.php#L135"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Comparison/StrictComparisonOfDifferentTypesRule.php#L142"
             ]
         }
     },
@@ -9162,14 +9162,14 @@
     "notIdentical.alwaysFalse": {
         "PHPStan\\Rules\\Comparison\\StrictComparisonOfDifferentTypesRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Comparison/StrictComparisonOfDifferentTypesRule.php#L108"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Comparison/StrictComparisonOfDifferentTypesRule.php#L115"
             ]
         }
     },
     "notIdentical.alwaysTrue": {
         "PHPStan\\Rules\\Comparison\\StrictComparisonOfDifferentTypesRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Comparison/StrictComparisonOfDifferentTypesRule.php#L135"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Comparison/StrictComparisonOfDifferentTypesRule.php#L142"
             ]
         }
     },
@@ -10177,8 +10177,8 @@
     "phpstanApi.instanceofType": {
         "PHPStan\\Rules\\Api\\ApiInstanceofTypeRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Api/ApiInstanceofTypeRule.php#L142",
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Api/ApiInstanceofTypeRule.php#L151"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Api/ApiInstanceofTypeRule.php#L144",
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Api/ApiInstanceofTypeRule.php#L153"
             ]
         }
     },
