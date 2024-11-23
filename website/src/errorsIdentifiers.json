@@ -7948,7 +7948,7 @@
     "method.finalPrivate": {
         "PHPStan\\Rules\\Methods\\FinalPrivateMethodRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Methods/FinalPrivateMethodRule.php#L48"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Methods/FinalPrivateMethodRule.php#L41"
             ]
         }
     },
