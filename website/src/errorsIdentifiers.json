@@ -11110,7 +11110,7 @@
     "property.unusedType": {
         "PHPStan\\Rules\\TooWideTypehints\\TooWidePropertyTypeRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/TooWideTypehints/TooWidePropertyTypeRule.php#L114"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/TooWideTypehints/TooWidePropertyTypeRule.php#L117"
             ]
         }
     },
