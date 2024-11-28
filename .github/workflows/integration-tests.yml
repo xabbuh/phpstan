@@ -79,10 +79,11 @@ jobs:
           - php-version: 8.3
             name: Larastan tests PHP 8.3, ^11.15
             script: |
-              git clone https://github.com/larastan/larastan.git -b v3.0.0 --depth 1 e2e/integration/repo
+              git clone https://github.com/larastan/larastan.git e2e/integration/repo
               cd e2e/integration/repo
+              git checkout ca92de263f6a95929f59701e6757be8f27939262
+              cp ../larastan-composer.lock composer.lock
               composer install
-              composer update --with='laravel/framework:^11.15'
               cp ../../../phpstan.phar vendor/phpstan/phpstan/phpstan.phar
               cp ../../../phpstan vendor/phpstan/phpstan/phpstan
               cp ../../../bootstrap.php vendor/phpstan/phpstan/bootstrap.php
@@ -300,8 +301,9 @@ jobs:
 #            baseline-file: symplify-baseline.neon
           - php-version: 8.3
             repo: larastan/larastan
-            ref: v3.0.0
+            ref: ca92de263f6a95929f59701e6757be8f27939262
             setup: |
+              cp ../larastan-composer.lock composer.lock
               composer install
               cp ../../../phpstan.phar vendor/phpstan/phpstan/phpstan.phar
               cp ../../../phpstan vendor/phpstan/phpstan/phpstan
