@@ -5030,6 +5030,11 @@
                 "https://github.com/phpstan/phpstan-deprecation-rules/blob/2.0.x/src/Rules/Deprecations/CallToDeprecatedFunctionRule.php#L60",
                 "https://github.com/phpstan/phpstan-deprecation-rules/blob/2.0.x/src/Rules/Deprecations/CallToDeprecatedFunctionRule.php#L69"
             ]
+        },
+        "PHPStan\\Rules\\Deprecations\\CallWithDeprecatedIniOptionRule": {
+            "phpstan/phpstan-deprecation-rules": [
+                "https://github.com/phpstan/phpstan-deprecation-rules/blob/2.0.x/src/Rules/Deprecations/CallWithDeprecatedIniOptionRule.php#L128"
+            ]
         }
     },
     "function.duplicate": {
@@ -10781,6 +10786,27 @@
             ]
         }
     },
+    "property.abstract": {
+        "PHPStan\\Rules\\Properties\\PropertyInClassRule": {
+            "phpstan/phpstan-src": [
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Properties/PropertyInClassRule.php#L71"
+            ]
+        }
+    },
+    "property.abstractNonHooked": {
+        "PHPStan\\Rules\\Properties\\PropertyInClassRule": {
+            "phpstan/phpstan-src": [
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Properties/PropertyInClassRule.php#L53"
+            ]
+        }
+    },
+    "property.abstractWithoutAbstractHook": {
+        "PHPStan\\Rules\\Properties\\PropertyInClassRule": {
+            "phpstan/phpstan-src": [
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Properties/PropertyInClassRule.php#L62"
+            ]
+        }
+    },
     "property.callableType": {
         "PHPStan\\Rules\\Properties\\InvalidCallablePropertyTypeRule": {
             "phpstan/phpstan-src": [
@@ -10817,10 +10843,31 @@
             ]
         }
     },
+    "property.hookBodyInInterface": {
+        "PHPStan\\Rules\\Properties\\PropertiesInInterfaceRule": {
+            "phpstan/phpstan-src": [
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Properties/PropertiesInInterfaceRule.php#L64"
+            ]
+        }
+    },
+    "property.hookWithoutBody": {
+        "PHPStan\\Rules\\Properties\\PropertyInClassRule": {
+            "phpstan/phpstan-src": [
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Properties/PropertyInClassRule.php#L83"
+            ]
+        }
+    },
+    "property.hooksNotSupported": {
+        "PHPStan\\Rules\\Properties\\PropertyInClassRule": {
+            "phpstan/phpstan-src": [
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Properties/PropertyInClassRule.php#L40"
+            ]
+        }
+    },
     "property.inInterface": {
         "PHPStan\\Rules\\Properties\\PropertiesInInterfaceRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Properties/PropertiesInInterfaceRule.php#L31"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Properties/PropertiesInInterfaceRule.php#L37"
             ]
         }
     },
@@ -10847,6 +10894,13 @@
             ]
         }
     },
+    "property.nonHookedInInterface": {
+        "PHPStan\\Rules\\Properties\\PropertiesInInterfaceRule": {
+            "phpstan/phpstan-src": [
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Properties/PropertiesInInterfaceRule.php#L46"
+            ]
+        }
+    },
     "property.nonObject": {
         "PHPStan\\Rules\\Properties\\AccessPropertiesInAssignRule": {
             "phpstan/phpstan-src": [
@@ -10856,6 +10910,13 @@
         "PHPStan\\Rules\\Properties\\AccessPropertiesRule": {
             "phpstan/phpstan-src": [
                 "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Properties/AccessPropertiesRule.php#L93"
+            ]
+        }
+    },
+    "property.nonPublicInInterface": {
+        "PHPStan\\Rules\\Properties\\PropertiesInInterfaceRule": {
+            "phpstan/phpstan-src": [
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/Properties/PropertiesInInterfaceRule.php#L55"
             ]
         }
     },
