@@ -51,7 +51,6 @@ If you use a popular framework like Symfony, Doctrine or Laravel etc., make sure
 Go through the extra [configuration options](/config-reference#stricter-analysis) for stricter analysis. Some of them are enabled when you install phpstan-strict-rules, but there are some extra options that aren't part of any rule level, nor phpstan-strict-rules. A few examples:
 
 * [`checkUninitializedProperties`](/config-reference#checkuninitializedproperties): Report typed properties not set in constructor
-* [`checkImplicitMixed`](/config-reference#checkimplicitmixed): Level 9 on steroids
 * [`checkBenevolentUnionTypes`](/config-reference#checkbenevolentuniontypes): Report wrong usage of unknown array keys, and other types
 * [`rememberPossiblyImpureFunctionValues: false`](/config-reference#rememberpossiblyimpurefunctionvalues): Do not remember return values of functions that are not marked as pure
 * [`reportPossiblyNonexistentGeneralArrayOffset`](/config-reference#reportpossiblynonexistentgeneralarrayoffset): Make sure offset exists before accessing it on a general array
