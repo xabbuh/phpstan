@@ -828,7 +828,7 @@
         },
         "PHPStan\\Rules\\Functions\\ImplodeParameterCastableToStringRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/ParameterCastableToStringCheck.php#L49"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/ParameterCastableToStringCheck.php#L51"
             ]
         },
         "PHPStan\\Rules\\Functions\\ParamAttributesRule": {
@@ -838,12 +838,12 @@
         },
         "PHPStan\\Rules\\Functions\\ParameterCastableToNumberRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/ParameterCastableToStringCheck.php#L49"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/ParameterCastableToStringCheck.php#L51"
             ]
         },
         "PHPStan\\Rules\\Functions\\ParameterCastableToStringRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/ParameterCastableToStringCheck.php#L49"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/ParameterCastableToStringCheck.php#L51"
             ]
         },
         "PHPStan\\Rules\\Functions\\RandomIntParametersRule": {
@@ -853,7 +853,7 @@
         },
         "PHPStan\\Rules\\Functions\\SortParameterCastableToStringRule": {
             "phpstan/phpstan-src": [
-                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/ParameterCastableToStringCheck.php#L49"
+                "https://github.com/phpstan/phpstan-src/blob/2.0.x/src/Rules/ParameterCastableToStringCheck.php#L51"
             ]
         },
         "PHPStan\\Rules\\Methods\\CallMethodsRule": {
