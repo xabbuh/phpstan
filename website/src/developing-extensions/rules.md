@@ -216,9 +216,9 @@ What's left to do is to return an array of errors to report. The `processNode()`
 
 ```php
 return [
-	RuleErrorBuilder::message(
-		'New Person instance can be created only in PersonFactory.'
-	)->build(),
+	RuleErrorBuilder::message('New Person instance can be created only in PersonFactory.')
+		->identifier('myCustomRules.newPerson')
+		->build(),
 ];
 ```
 
@@ -367,7 +367,8 @@ class CompareDateTimeRule implements Rule
 			RuleErrorBuilder::message(sprintf(
 				'Cannot compare DateTime instances with %s.',
 				$node->getOperatorSigil()
-			))->build(),
+			))->identifier('myCustomRules.dateCompare')
+			->build(),
 		];
 	}
 
@@ -426,7 +427,8 @@ class ImmutableObjectRule implements Rule
 			RuleErrorBuilder::message(sprintf(
 				'Immutability violated - assigning $%s property outside constructor.',
 				$node->var->name->toString()
-			))->build(),
+			))->identifier('myCustomRules.propertyAssignment')
+			->build(),
 		];
 	}
 
