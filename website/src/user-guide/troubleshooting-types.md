@@ -41,11 +41,12 @@ Besides the original code that's analysed, PHPStan also takes advantage of so-ca
 Internal stubs
 ---------
 
-PHPStan needs to know precise parameter and return types of built-in PHP functions and those coming from loaded PHP extensions. There are three separate sources for that:
+PHPStan needs to know precise parameter and return types of built-in PHP functions and those coming from loaded PHP extensions. There are four separate sources for that:
 
 * PHPStan-maintained [`functionMap.php`](https://github.com/phpstan/phpstan-src/blob/2.0.x/resources/functionMap.php), and [deltas](https://github.com/phpstan/phpstan-src/tree/2.0.x/resources) for different PHP versions
+* [PHPStan stubs](https://github.com/phpstan/phpstan-src/tree/2.0.x/stubs) used to augment PHPDocs of built-in PHP classes and functions
 * [jetbrains/phpstorm-stubs](https://github.com/jetbrains/phpstorm-stubs)
-* [Official stubs](https://github.com/phpstan/php-8-stubs) extracted from [php-src](https://github.com/php/php-src) if you're on PHP 8 and later
+* [Official PHP stubs](https://github.com/phpstan/php-8-stubs) extracted from [php-src](https://github.com/php/php-src) if you're on PHP 8 and later
 * For custom PHP extensions that are not present in `jetbrains/phpstorm-stubs`, their [PHP reflection data](https://www.php.net/manual/en/book.reflection.php) is used.
 
 The way these are combined together to offer the full picture is a very complex logic and subject to frequent change as bugs are getting fixed and improvements made.
