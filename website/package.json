@@ -11,7 +11,6 @@
 		"@docsearch/js": "3",
 		"@sentry/browser": "^7.52.1",
 		"@stripe/stripe-js": "^4.9.0",
-		"fireworks-js": "^2.10.8",
 		"jquery": "^3.6.0",
 		"knockout": "^3.5.1",
 		"linkify-string": "^4.1.0",
@@ -74,13 +73,13 @@
 		"not IE 11"
 	],
 	"staticFiles": [
-		{
-			"staticPath": "tmp/images-emails",
-			"staticOutPath": "images-emails"
-		},
-		{
-			"staticPath": "tmp/images-emails-2",
-			"staticOutPath": "images-emails-2"
-		}
-	]
+        {
+            "staticPath": "tmp/images-emails",
+            "staticOutPath": "images-emails"
+        },
+        {
+            "staticPath": "tmp/images-emails-2",
+            "staticOutPath": "images-emails-2"
+        }
+    ]
 }
