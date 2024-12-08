@@ -164,5 +164,6 @@ the logo of your company in PHPStan's README and the website.
 <li><a href="https://github.com/ssddanbrown">Dan Brown (ssddanbrown)</a></li>
 <li><a href="https://github.com/klobinoid">Petr Klobás (klobinoid)</a></li>
 <li><a href="https://github.com/teruchi">Terutomo Takahashi (teruchi)</a></li>
+<li><a href="https://github.com/zeleznypa">Pavel Železný (zeleznypa)</a></li>
 <!-- five-org -->
 </ul>
