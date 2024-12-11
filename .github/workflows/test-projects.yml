@@ -22,7 +22,7 @@ jobs:
         repository:
           - "phpstan/lorem"
           - "phpstan/ipsum"
-          #- "phpstan/dolor"
+          - "phpstan/dolor"
           - "packagist/private-packagist"
 
     steps:
