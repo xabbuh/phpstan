@@ -415,7 +415,7 @@ jobs:
               cp ../../../phpstan.phar vendor/phpstan/phpstan/phpstan.phar
               cp ../../../phpstan vendor/phpstan/phpstan/phpstan
               cp ../../../bootstrap.php vendor/phpstan/phpstan/bootstrap.php
-            phpstan-command: ../../../phpstan.phar analyse -c ../shipmonk.neon
+            phpstan-command: vendor/bin/phpstan analyse -c ../shipmonk.neon
           - php-version: 8.3
             repo: shipmonk-rnd/dead-code-detector
             ref: e3c37299fce6523c9708f24cd3675d65a33bec12
